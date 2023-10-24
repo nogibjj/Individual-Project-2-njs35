@@ -1,6 +1,4 @@
-// main.rs
-
-use rust_cli::{execute_cud_query, execute_read_query, OperationResult};
+use rust_cli::{execute_cud_query, execute_read_query};
 use std::env;
 
 fn main() {
@@ -17,19 +15,23 @@ fn main() {
 
     if first_word == "select" || first_word == "show" {
         match execute_read_query(query) {
-            OperationResult::Read(data) => {
+            Ok(data) => {
                 for item in data {
-                    println!("{}", item);
+                    print!("Title: {}, Author: {}, Genre: {}, Price: {}, Stock: {}\n",
+                        item.get("Title").unwrap_or(&"".to_string()),
+                        item.get("Author").unwrap_or(&"".to_string()),
+                        item.get("Genre").unwrap_or(&"".to_string()),
+                        item.get("Price").unwrap_or(&"".to_string()),
+                        item.get("Stock").unwrap_or(&"".to_string())
+                    );
                 }
             }
-            OperationResult::Error(msg) => println!("{}", msg),
-            _ => {}
+            Err(e) => println!("Error executing read query: {:?}", e),
         }
     } else if first_word == "insert" || first_word == "update" || first_word == "delete" {
         match execute_cud_query(query) {
-            OperationResult::Success(msg) => println!("{}", msg),
-            OperationResult::Error(msg) => println!("{}", msg),
-            _ => {}
+            Ok(msg) => println!("{}", msg[0]), // Assuming the message is the first element in the vector
+            Err(e) => println!("Error executing CUD query: {:?}", e),
         }
     } else {
         println!("Unsupported operation: {}", first_word);
