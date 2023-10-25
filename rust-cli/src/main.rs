@@ -17,7 +17,8 @@ fn main() {
         match execute_read_query(query) {
             Ok(data) => {
                 for item in data {
-                    print!("Title: {}, Author: {}, Genre: {}, Price: {}, Stock: {}\n",
+                    println!(
+                        "Title: {}, Author: {}, Genre: {}, Price: {}, Stock: {}",
                         item.get("Title").unwrap_or(&"".to_string()),
                         item.get("Author").unwrap_or(&"".to_string()),
                         item.get("Genre").unwrap_or(&"".to_string()),

@@ -2,7 +2,6 @@
 
 use rusqlite::{Connection, Result};
 
-
 pub fn execute_cud_query(query: &str) -> Result<Vec<String>, rusqlite::Error> {
     let conn = Connection::open("bookstore_inventory.db")?;
 
@@ -16,8 +15,9 @@ pub fn execute_cud_query(query: &str) -> Result<Vec<String>, rusqlite::Error> {
     }
 }
 
-
-pub fn execute_read_query(query: &str) -> Result<Vec<std::collections::HashMap<String, String>>, rusqlite::Error> {
+pub fn execute_read_query(
+    query: &str,
+) -> Result<Vec<std::collections::HashMap<String, String>>, rusqlite::Error> {
     let conn = Connection::open("bookstore_inventory.db")?;
 
     let mut stmt = conn.prepare(query)?;
@@ -40,5 +40,3 @@ pub fn execute_read_query(query: &str) -> Result<Vec<std::collections::HashMap<S
 
     Ok(data)
 }
-
-
