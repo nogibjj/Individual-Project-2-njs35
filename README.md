@@ -4,6 +4,8 @@
 [![Rustfmt](https://github.com/nogibjj/Individual-Project-2-njs35/actions/workflows/rustfmt.yml/badge.svg)](https://github.com/nogibjj/Individual-Project-2-njs35/actions/workflows/rustfmt.yml)
 [![Tests](https://github.com/nogibjj/Individual-Project-2-njs35/actions/workflows/tests.yml/badge.svg)](https://github.com/nogibjj/Individual-Project-2-njs35/actions/workflows/tests.yml)
 ## Project Overview
+[--> Video Walkthrough <--](https://youtu.be/cSRo3_Vtifg)
+
 This project is centered around building a Rust CLI tool that allows the user to perform CRUD operations on a SQLite database. The CLI tool is straightforward to use, taking a SQL query of any format as an input. 
 
 While developing this project, I utilized GitHub Copilot to expedite the coding process. Copilot did a great job at suggesting error handling techniques in Rust, and I was able to learn a lot about the language by using it. Copilot also helped me to connect to and query the SQLite database using the rusqlite library. Additionally, Copilot helped me to improve the robustness of my tests to ensure that they were verifying the correct behavior of the functions.
