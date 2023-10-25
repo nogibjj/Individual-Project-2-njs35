@@ -16,3 +16,8 @@ jobs:
           override: true
       - name: Run Release
         run: make release
+      - name: Archive Binary
+        uses: actions/upload-artifact@v2
+        with:
+          name: optimized-binary
+          path: target/release/rust-cli
